@@ -1,29 +1,87 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8">
     <title>COC crystal sim</title>
     <script src="app.js" type="text/javascript">
-
     </script>
-  </head>
-  <body>
-<header>
-  <h1>Marvel Contest of Champions PHC simulator</h1>
-</header>
-<div class="about">
-  <h3>What's Going On</h3>
-<p>  This site simulates opening multiple Premium Hero Crystals in Marvel Contest of Champions. All percentages and settings are "educated guesses" based on my own user experience since Kabam does not release their percentages</p>
-</div>
+</head>
 
-<div class="basics">
-  <h3>The Nitty Gritty</h3>
-  <p>
-    There are alot of assumptions made in the programming of this site about how COC works without seeing the actual source code of COC. please keep in mid these are all just assumptions based on game logic.
-  </p>
-  <p>
-    The idea behind all this is that there are 3 tiers of rewards when you open a PHC. for lack of better terms I will use basic, rare, and super rare. Ex: 2star = basic; 3star = rare; 4star = super rare. This logic exists in pretty much all free to play games. 
-  </p>
-</div>
-  </body>
+<body>
+    <header>
+        <h1>Marvel Contest of Champions PHC simulator</h1>
+    </header>
+    <div class="about">
+        <h3>What's Going On</h3>
+        <p> This site assumes you are using Google Chrome and simulates opening multiple Premium Hero Crystals in Marvel Contest of Champions. All percentages and settings are "educated guesses" based on my own user experience since Kabam does not release their percentages</p>
+        <p>
+            I am a Front End Developer and I love writing JavaScript code. I think I read somewhere COC is programmed in C but I'm not 100% sure. All programing languages use similar logic and I'm going to share how I coded things, just keep in mind that it is JavaScript
+            code and none of it came from Kabam. Also keep in mind this is NOT a Kabam bashing site. I love the game. I'm just trying to simulate game mechanics that other people say are unfair.
+        </p>
+    </div>
+
+    <div class="basics">
+        <h3>The Nitty Gritty</h3>
+        <p>
+            There are alot of assumptions made in the programming of this site about how COC works without seeing the actual source code of COC. please keep in mid these are all just assumptions based on game logic.
+        </p>
+        <p>
+            The idea behind all this is that there are 3 tiers of rewards when you open a PHC. for lack of better terms I will use basic, rare, and super rare. Ex: 2star = basic; 3star = rare; 4star = super rare. When you open a crystal, you have a chance at getting
+            one of the rewards. This logic exists in pretty much all free to play games.
+        </p>
+        <p>
+            Some basic code for the above mentioned logic:
+        </p>
+        <p>
+            if(randomNumber >= 0.66) { crystal = "2star"} else if(randomNumber
+            < 0.66 && randomNumber>= 0.33 ) {crystal = "3star"} else {crystal = "4star"}
+        </p>
+        <p>
+            The above code is for an equal (33%) chance to get a 2, 3, or 4 star
+        </p>
+        <div class="explain">
+
+          <h2>Explanation</h2>
+            <p>
+                First you need a random number, in JS there is Math.random() which gives a random number between 0 and 1. This gives a nice random percentage ex: 0.25678 it goes to 16 decimal points so it could easily get to a super super rare percentage roll. ex: 0.0005
+
+            </p>
+            <h5>Try It Yourself</h5>
+            <p>
+              Right Click and select inspect. In the window that opens up click on Console. In the white space copy and paste: Math.random();
+            </p>
+            <p>
+              This is the "roll" you get a different number every time. I set a variable so it can be used in various functions
+            </p>
+            <p>
+              next you use an if statement: If the roll is greater than or equal to 0.66 the crystal (another variable) is equal to 2star, If the roll is less than 0.66 and greater than or equal to 0.33 the crystal is equal to 3star, If the roll is anything else the crystal is equal to 4star. This sets the percentage ranges at 33%
+            </p>
+            <p>
+              Obviously the percentages in COC are not equal so I adjusted them to my educated guess assumptions. I used 85% for 2star, 13% for 3 star, and a measely 2% for 4 star.
+            </p>
+        </div>
+    </div>
+    <div class="simulator">
+      <h1>Enough Talking</h1>
+      <p>
+        Set how many crystals you want to open and click the button!
+      </p>
+      <h5>Number of Crystals</h5>
+      <input id="ammount" type="number" name="name" value="">
+      <button id="open" type="button" name="button">Open</button>
+      <div class="results">
+        <div id="crystals">
+          <ul id="crystalList">
+
+          </ul>
+        </div>
+        <div id="totals">
+
+        </div>
+
+      </div>
+    </div>
+</body>
+
 </html>
